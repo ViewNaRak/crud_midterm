@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>แก้ไขข้อมูล</title>
+</head>
+<body>
+    <h2>แก้ไขนัดหมาย (ID: <%= appt.AppointmentID %>)</h2>
+    
+    <form action="/appointments/<%= appt.AppointmentID %>?_method=PUT" method="POST">
+        
+        <label>วันที่นัดหมาย:</label><br>
+        <input type="date" name="date" value="<%= appt.Date %>" required>
+        <br><br>
+
+        <label>เวลา:</label><br>
+        <input type="time" name="time" value="<%= appt.Time %>" required>
+        <br><br>
+
+        <label>สถานะ:</label><br>
+        <select name="status">
+            <option value="รอการยืนยัน" <%= appt.Status === 'รอการยืนยัน' ? 'selected' : '' %>>รอการยืนยัน</option>
+            <option value="ยืนยันแล้ว" <%= appt.Status === 'ยืนยันแล้ว' ? 'selected' : '' %>>ยืนยันแล้ว</option>
+            <option value="ยกเลิก" <%= appt.Status === 'ยกเลิก' ? 'selected' : '' %>>ยกเลิก</option>
+            <option value="เสร็จสิ้น" <%= appt.Status === 'เสร็จสิ้น' ? 'selected' : '' %>>เสร็จสิ้น</option>
+        </select>
+        <br><br>
+
+        <label>หมายเหตุ/อาการเบื้องต้น:</label><br>
+        <textarea name="notes" rows="4" cols="30"><%= appt.Notes %></textarea>
+        <br><br>
+
+        <button type="submit">อัปเดตข้อมูล</button>
+        &nbsp;
+        <a href="/">ย้อนกลับ</a>
+    </form>
+</body>
+</html>

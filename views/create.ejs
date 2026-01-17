@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>สร้างนัดหมายใหม่</title>
+</head>
+<body>
+    <h2>เพิ่มนัดหมายแพทย์</h2>
+    
+    <form action="/appointments" method="POST">
+        <label>วันที่นัดหมาย:</label><br>
+        <input type="date" name="date" required>
+        <br><br>
+
+        <label>เวลา:</label><br>
+        <input type="time" name="time" required>
+        <br><br>
+
+        <label>สถานะ:</label><br>
+        <select name="status">
+            <option value="รอการยืนยัน">รอการยืนยัน</option>
+            <option value="ยืนยันแล้ว">ยืนยันแล้ว</option>
+            <option value="ยกเลิก">ยกเลิก</option>
+            <option value="เสร็จสิ้น">เสร็จสิ้น</option>
+        </select>
+        <br><br>
+
+        <label>หมายเหตุ/อาการเบื้องต้น:</label><br>
+        <textarea name="notes" rows="4" cols="30"></textarea>
+        <br><br>
+
+        <button type="submit">บันทึกข้อมูล</button>
+        &nbsp;
+        <a href="/">ย้อนกลับ</a>
+    </form>
+</body>
+</html>

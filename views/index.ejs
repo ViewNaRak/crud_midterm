@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>รายการนัดหมาย</title>
+</head>
+<body>
+    <h1>ตารางนัดหมายแพทย์</h1>
+    
+    <a href="/new">เพิ่มนัดหมายใหม่</a>
+    <br><br>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr style="background-color: #eee;">
+                <th>รหัสนัดหมาย (ID)</th>
+                <th>วันที่</th>
+                <th>เวลา</th>
+                <th>สถานะ</th>
+                <th>หมายเหตุ</th>
+                <th>จัดการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% appointments.forEach(function(appt) { %>
+                <tr>
+                    <td><%= appt.AppointmentID %></td>
+                    <td><%= appt.Date %></td>
+                    <td><%= appt.Time %></td>
+                    <td><%= appt.Status %></td>
+                    <td><%= appt.Notes %></td>
+                    <td>
+                        <a href="/edit/<%= appt.AppointmentID %>">แก้ไข</a>
+                        &nbsp;
+                        <form action="/appointments/<%= appt.AppointmentID %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('ยืนยันที่จะลบข้อมูลนี้?')">ลบ</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
